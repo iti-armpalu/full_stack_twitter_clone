@@ -31,6 +31,9 @@ gem 'bcrypt', '~> 3.1'
 # Bootstrap
 gem 'bootstrap', '~> 5.1'
 
+# FontAwesome
+gem "font-awesome-rails"
+
 # AWS S3
 gem 'aws-sdk-s3', '~> 1.112'
 

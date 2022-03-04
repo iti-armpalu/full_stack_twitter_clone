@@ -1,0 +1,58 @@
+/* * {
+  border: 1px solid green;
+}*/
+
+.twitter-small-icon {
+  color: #1DA1F2;
+}
+
+.landing-header {
+  font-size: 64px;
+}
+
+.log-in-button {
+  background-color: #1DA1F2;
+  border: #1DA1F2;
+}
+
+.sign-up-button {
+  color: #1DA1F2;
+  border: 1px solid #1DA1F2;
+  background-color: #fff;
+}
+
+.log-in-sign-up-background {
+  background-color: #F7F9F9;
+  height: 300px;
+}
+
+.image {
+  background-color: #1DA1F2;
+  position: relative;
+}
+
+.twitter-large-icon {
+  color: white;
+  font-size: 300px;
+  position: absolute;
+  top: 30%;
+  left: 20%;
+}
+
+.content {
+  min-height: calc(100vh - 64px);
+}
+
+.footer-bar a {
+  color: #536571;
+  line-height: 16px;
+  font-size: 13px;
+  text-decoration: none;
+  padding-right: 16px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+.footer-bar a:hover {
+  text-decoration: underline;
+}
