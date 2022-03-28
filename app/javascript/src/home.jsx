@@ -26,12 +26,12 @@ class Home extends React.Component {
 
     if (authenticated) {
       return (
-        <User />
+        <Guest />
       );
     };
 
     return (
-      <Guest />
+      <User />
     )
   }
 }

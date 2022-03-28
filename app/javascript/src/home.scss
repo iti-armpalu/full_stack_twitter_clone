@@ -2,8 +2,39 @@
   border: 1px solid green;
 }*/
 
+* {
+  margin: 0;
+  padding: 0;
+  transition: 0.2s ease;
+  user-select: none;
+}
+
+:root {
+  --background: #000;
+}
+
+a {
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.container {
+  max-width: 1440px;
+  margin: auto;
+  height: 100vh;
+}
+
+
 .twitter-small-icon {
   color: #1DA1F2;
+  padding: 8px;
+}
+
+.twitter-leftBanner {
+  display: inline-block;
+  margin-bottom: 5px;
+  padding: 8px 8px 4px 10px;
+  border-radius: 50%;
 }
 
 .landing-header {
@@ -56,3 +87,50 @@
 .footer-bar a:hover {
   text-decoration: underline;
 }
+
+/* Nav */
+
+.navbar {
+  align-items: flex-start;
+}
+
+
+
+nav span {
+  color: #141923;
+  display: inline-flex;
+  vertical-align: middle;
+  padding: 8px 25px 8px 10px;
+}
+
+nav span:hover {
+  background-color: #e7e7e8;
+  border-radius: 50px;
+}
+
+.nav-icon {
+  padding-right: 20px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  align-self: center;
+}
+
+.nav-icon-layer {
+  padding-right: 40px;
+  height: 30px;
+}
+
+.leftBanner {
+  height: 100%;
+  border-right: 1px solid #f6f9f9;
+  justify-content: space-between;
+}
+
+/* User logout */
+
+.user-logout h6 {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
