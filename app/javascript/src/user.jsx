@@ -1,6 +1,7 @@
 // user.jsx
 import React from 'react';
 import LeftBanner from '@src/leftBanner';
+import RightBanner from '@src/rightBanner';
 
 import './home.scss';
 
@@ -17,7 +18,7 @@ class User extends React.Component {
             <h4>Home</h4>
           </div>
           <div className="col-3">
-          
+            <RightBanner />
           </div>
 
         </div>

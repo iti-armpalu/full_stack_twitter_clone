@@ -13,6 +13,10 @@
   --background: #000;
 }
 
+body {
+  color: #141923;
+}
+
 a {
   text-decoration: none;
   font-size: 18px;
@@ -127,6 +131,11 @@ nav span:hover {
   justify-content: space-between;
 }
 
+.rightBanner {
+  height: 100%;
+  border-right: 1px solid #f6f9f9;
+}
+
 /* User logout */
 
 .user-logout h6 {
@@ -134,3 +143,69 @@ nav span:hover {
   margin-bottom: 4px;
 }
 
+
+
+.rightBanner .input-group-text, .rightBanner .form-control {
+  background-color: transparent;
+  border: none;
+
+}
+
+
+.search-bar-background {
+  background-color: #eff3f4;
+  border-radius: 50px;
+}
+
+.search-bar-icon {
+  color: #536571;
+}
+
+
+::placeholder { /* Most modern browsers support this now. */
+  color: #536571;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.search-bar-help {
+  font-size: 15px;
+  padding: 8px;
+  text-align: center;
+  color: #536571;
+  border: 1px solid #536571;
+  border-radius: 16px;
+}
+
+.right-sidebar-box {
+  padding: 4px;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  background-color: #F7F9F9;
+
+}
+
+.right-sidebar-box h2 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.right-sidebar-box h6 {
+  font-size: 15px;
+}
+
+.whats-happening-tweet span {
+  font-size: 13px;
+  color: #536571;
+}
+
+.btn-follow {
+  font-size: 14px;
+  border-radius: 16px;
+}
+
+.circle-grey {
+  color: #e7e7e8;
+}

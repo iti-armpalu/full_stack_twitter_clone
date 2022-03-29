@@ -1,6 +1,6 @@
 // leftBanner.jsx
 import React from 'react';
-import { FontAwesomeIcon, listItem } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faHashtag, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { faBell, faEnvelope, faBookmark, faRectangleList, faUser, faCircle } from '@fortawesome/free-regular-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
@@ -11,7 +11,7 @@ class LeftBanner extends React.Component {
 
   render () {
     return (
-        <div className="d-flex flex-column leftBanner px-2">
+        <div className="d-flex flex-column leftBanner px-2 py-2">
 
           <nav className="navbar d-flex flex-column">
             <a className="navbar-brand" href="#"><FontAwesomeIcon icon={faTwitter} className="twitter-small-icon nav-icon" /></a>
@@ -47,7 +47,6 @@ class LeftBanner extends React.Component {
               </ul>
           </nav>
 
-  
           <div className="user-logout">
             <div className="row d-flex align-items-center my-2">
               <div className="col-3">
