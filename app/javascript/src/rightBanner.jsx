@@ -5,7 +5,6 @@ import { faSearch, faCircle } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 
 import './home.scss';
-import { useRef } from 'react';
 
 class LeftBanner extends React.Component {
   constructor(props) {
@@ -65,9 +64,6 @@ class LeftBanner extends React.Component {
     }
   ]
 
-
-
-
   render () {
     return (
         <div className="d-flex flex-column rightBanner px-2 py-2">
@@ -91,7 +87,7 @@ class LeftBanner extends React.Component {
             <div>
               {this.whatsHappeningTweets.map(tweet => {
                 return (
-                  <div key={tweet.id} className="row g-0 d-flex flex-column px-2 py-3">
+                  <div key={tweet.id} className="row g-0 d-flex flex-column px-2 py-3 whats-happening-tweet">
                     <div className="col">
                       <span>{tweet.topic}</span>
                       <span> • Trending</span>

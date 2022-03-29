@@ -209,3 +209,53 @@ nav span:hover {
 .circle-grey {
   color: #e7e7e8;
 }
+
+
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  padding: 8px 16px;
+  margin-left: 16px;
+  color: #1DA1F2;
+}
+
+.upload-btn-wrapper:hover {
+  background-color: aliceblue;
+  border-radius: 50px;
+}
+
+.btn-upload {
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  color: #1DA1F2;
+}
+
+.icon-upload {
+  margin-right: 8px;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 40px;
+  width: 130px;
+  opacity: 0;
+}
+
+.btn-tweet {
+  color: #fff;
+  background-color: #1DA1F2;
+  border-radius: 50px;
+}
+
+.btn-tweet:hover {
+  color: #fff;
+  background-color: #1A8CD8;
+}
+
+

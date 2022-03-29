@@ -2,6 +2,8 @@
 import React from 'react';
 import LeftBanner from '@src/leftBanner';
 import RightBanner from '@src/rightBanner';
+import TweetForm from '@src/tweetForm';
+import Tweets from '@src/tweets';
 
 import './home.scss';
 
@@ -15,7 +17,17 @@ class User extends React.Component {
             <LeftBanner />
           </div>
           <div className="col-6">
-            <h4>Home</h4>
+            <div className="row d-flex flex-column px-3 py-2">
+              <div className="col py-3">
+                <h5 className="mb-0"><b>Home</b></h5>
+              </div>
+              <div className="col">
+                <TweetForm />
+              </div>
+              <div className="col">
+                <Tweets />
+              </div>
+            </div>
           </div>
           <div className="col-3">
             <RightBanner />
