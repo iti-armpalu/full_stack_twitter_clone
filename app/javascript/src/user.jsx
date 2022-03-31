@@ -16,7 +16,7 @@ class User extends React.Component {
           <div className="col-3 d-flex justify-content-end">
             <LeftBanner />
           </div>
-          <div className="col-6">
+          <div className="col-6 feed-inner">
             <div className="row d-flex flex-column px-3 py-2">
               <div className="col py-3">
                 <h5 className="mb-0"><b>Home</b></h5>

@@ -127,13 +127,11 @@ nav span:hover {
 
 .leftBanner {
   height: 100%;
-  border-right: 1px solid #f6f9f9;
   justify-content: space-between;
 }
 
 .rightBanner {
   height: 100%;
-  border-right: 1px solid #f6f9f9;
 }
 
 /* User logout */
@@ -256,6 +254,37 @@ nav span:hover {
 .btn-tweet:hover {
   color: #fff;
   background-color: #1A8CD8;
+}
+
+.tweet-inner {
+  border-top: 1px solid #f6f9f9;
+  border-bottom: 1px solid #f6f9f9;
+}
+
+
+.tweet-details span {
+  font-size: 15px;
+  margin-right: 4px;
+}
+
+.tweet-username, .tweet-time {
+  color: #536571;
+}
+
+.btn-delete {
+  color: #1DA1F2;
+  text-decoration: none;
+  padding: 0;
+}
+
+.btn-delete:hover {
+  color: #1A8CD8;
+  text-decoration: underline;
+}
+
+.feed-inner {
+  border-left: 1px solid #f6f9f9;
+  border-right: 1px solid #f6f9f9;
 }
 
 

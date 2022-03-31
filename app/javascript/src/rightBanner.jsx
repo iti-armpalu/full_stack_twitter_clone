@@ -123,7 +123,7 @@ class LeftBanner extends React.Component {
                       <h6 className="my-0">@{user.username}</h6>
                     </div>
                     <div className="col-4 d-flex justify-content-center">
-                      <button type="button" class="btn btn-dark btn-follow">Follow</button>
+                      <button type="button" className="btn btn-dark btn-follow">Follow</button>
                     </div>
                   </div>
                 )
