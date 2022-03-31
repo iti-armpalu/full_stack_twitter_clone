@@ -13,9 +13,11 @@ class TweetForm extends React.Component {
     this.state = {
       msg: '',
       error: '',
+      tweets: [],
     }
 
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+
   }
 
   handleChange = (e) => {
@@ -28,26 +30,42 @@ class TweetForm extends React.Component {
     e.preventDefault();
 
     // Why FormData? - The FormData interface provides a way to easily construct a set of key/value pairs representing form fields and their values
-    let formData = new FormData()
+    // let formData = new FormData()
 
     // The append() method of the FormData interface appends a new value onto an existing key inside a FormData object, or adds the key if it does not already exist. Synatx: formData.append(name, value);
-    formData.append('tweet[message]', this.state.msg);
+    // Note: FormData will only use input fields that use the name attribute.
+
+    // formData.append('tweet[message]', this.state.msg);
+
+  
 
     fetch('/api/tweets', safeCredentials({
       method: 'POST',
-      data: formData,
+      body: JSON.stringify({
+        tweet: {
+          message: this.state.msg,
+        }
+      })
     }))
       .then(handleErrors)
       .then(data => {
-        if (data.success) {
-          console.log(`This worked`)
-          // clear tweet form, then get tweets
-
-        }
+        console.log("This worked")
+        this.getAllTweets()
       })
       .catch(error => {
         this.setState({
           error: 'Could not post a tweet.',
+        })
+      })
+  }
+
+  getAllTweets() {
+    fetch('/api/tweets')
+      .then(handleErrors)
+      .then(data => {
+        console.log('data', data)
+        this.setState({ 
+          tweets: data.tweets,
         })
       })
   }
@@ -58,7 +76,9 @@ class TweetForm extends React.Component {
     return (
       <form onSubmit={this.postTweet}>
         <div className="mb-3">
-          <textarea className="form-control" rows="3" placeholder="What's happening?" value={msg} onChange={this.handleChange}></textarea>
+
+        {/* Textarea note: The name attribute is needed to reference the form data after the form is submitted (if you omit the name attribute, no data from the text area will be submitted). */}
+          <textarea className="form-control" id="tweet" rows="3" placeholder="What's happening?" name="msg" value={msg} onChange={this.handleChange}></textarea>
         </div>
 
         <div className="form-group row g-0">

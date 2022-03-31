@@ -1,5 +1,6 @@
 // tweets.jsx
 import React from 'react';
+import { handleErrors } from '@utils/fetchHelper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faCircle } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
@@ -7,30 +8,29 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 import './home.scss';
 
 class Tweets extends React.Component {
-
-  sampleTweets = [
-    {
-      id: 1,
-      name: 'BBC News (World)',
-      username: 'BBCWorld',
-      message: "How to think about Covid data right now",
-      created_at: "2022-01-09T17:55:46.732Z",
-      updated_at: "2022-01-09T17:55:46.732Z"
-    },
-    {
-      id: 2,
-      name: 'Ricky Gervais',
-      username: 'rickygervais',
-      message: "💸 The jobs that will pay the highest salaries in 2040. Most of the professions we do today will be obsolete in two decades, so how can you guide your children to a successful career? ⬇️",
-      created_at: "2022-01-09T17:55:46.732Z",
-      updated_at: "2022-01-09T17:55:46.732Z"
+  constructor(props) {
+    super(props)
+    this.state = {
+      tweets: [],
     }
-  ]
-  
+  }
+
+  componentDidMount() {
+    fetch('/api/tweets')
+      .then(handleErrors)
+      .then(data => {
+        this.setState({
+          tweets: data.tweets,
+        })
+      })
+  }
+
   render () {
+    const { tweets } = this.state;
+
     return (
       <div className="tweets py-3">
-        {this.sampleTweets.map(tweet => {
+        {tweets.map(tweet => {
           return (
             <div  key={tweet.id} className="row d-flex py-2 tweet-inner">
               <div className="col-1">
@@ -44,8 +44,8 @@ class Tweets extends React.Component {
                 <div className="row d-flex flex-column tweet-details">
                   <div className="col d-flex justify-content-between">
                     <div>
-                      <span className="tweet-name"><b>{tweet.name}</b></span>
-                      <span className="tweet-username">@{tweet.username}</span>
+                      <span className="tweet-name"><b>User User</b></span>
+                      <span className="tweet-username">@User</span>
                       <span className="tweet-time">• 9h</span>
                     </div>
                     <button type="button" className="btn btn-link btn-delete">Delete</button>
