@@ -11,7 +11,7 @@ class Tweets extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      tweets: {},
+      tweets: [],
     }
   }
 
@@ -25,26 +25,26 @@ class Tweets extends React.Component {
       })
   }
 
-  deleteTweet = (e) => {
-    const tweet_id = this.props.tweet_id
+  // deleteTweet = (e) => {
+  //   const tweet_id = this.props.tweet_id
 
-    fetch('/api/tweets/${tweet_id}' ({
-      method: 'DELETE',
-    }))
-      .then(handleErrors)
-      .then(data => {
-        console.log("Tweet deleted")
-        this.setState({ 
-          msg: '' 
-        })
-        this.getAllTweets()
-      })
-      .catch(error => {
-        this.setState({
-          error: 'Could not post a tweet.',
-        })
-      })
-  }
+  //   fetch('/api/tweets/${tweet_id}' ({
+  //     method: 'DELETE',
+  //   }))
+  //     .then(handleErrors)
+  //     .then(data => {
+  //       console.log("Tweet deleted")
+  //       this.setState({ 
+  //         msg: '' 
+  //       })
+  //       this.getAllTweets()
+  //     })
+  //     .catch(error => {
+  //       this.setState({
+  //         error: 'Could not post a tweet.',
+  //       })
+  //     })
+  // }
 
 
   render () {

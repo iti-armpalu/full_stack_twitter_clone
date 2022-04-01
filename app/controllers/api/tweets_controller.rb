@@ -6,16 +6,13 @@ module Api
     end
 
     def create
-      # token = cookies.signed[:twitter_session_token]
-      # session = Session.find_by(token: token)
-      # user = session.user
-      # @tweet = user.tweets.new(tweet_params)
-
-      # Added for testing
-      @tweet = Tweet.new(tweet_params)
+      token = cookies.signed[:twitter_session_token]
+      session = Session.find_by(token: token)
+      user = session.user
+      @tweet = user.tweets.new(tweet_params)
 
       if @tweet.save
-        # TweetMailer.notify(@tweet).deliver!
+        TweetMailer.notify(@tweet).deliver!
         render 'api/tweets/create'
       end
     end

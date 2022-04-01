@@ -49,6 +49,9 @@ class SigninWidget extends React.Component {
             authenticated: true,
             success: 'Sign in was successful.',
           })
+          const params = new URLSearchParams(window.location.search);
+          const redirect_url = params.get('redirect_url') || '/';
+          window.location = redirect_url;
         }
       })
       .catch(error => {

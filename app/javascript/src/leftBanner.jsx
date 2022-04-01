@@ -1,5 +1,8 @@
 // leftBanner.jsx
 import React from 'react';
+import { safeCredentials, handleErrors } from '@utils/fetchHelper';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faHashtag, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { faBell, faEnvelope, faBookmark, faRectangleList, faUser, faCircle } from '@fortawesome/free-regular-svg-icons';
@@ -8,8 +11,43 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import './home.scss';
 
 class LeftBanner extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      username: '',
+      authenticated: true,
+    }
+  }
+
+  logout = (e) => {
+    e.preventDefault();
+
+    fetch('/api/sessions', safeCredentials({
+      method: 'DELETE',
+    }))
+      .then(handleErrors)
+      .then(data => {
+        console.log('data', data)
+        if (data.success) {
+          console.log('Sign out successful')
+          this.setState({
+            authenticated: false,
+          })
+          const params = new URLSearchParams(window.location.search);
+          const redirect_url = params.get('redirect_url') || '/';
+          window.location = redirect_url;
+        }
+      })
+      .catch(error => {
+        this.setState({
+          error: 'Could not sign out.',
+        })
+      })
+  }
+
 
   render () {
+
     return (
         <div className="d-flex flex-column leftBanner px-2 py-2">
 
@@ -56,11 +94,15 @@ class LeftBanner extends React.Component {
                 </span>
               </div>
               <div className="col">
-                <h6>John Smith</h6>
-                <h6>@johnsmith</h6>
+                <h6>@username</h6>
+                <h6>email</h6>
               </div>
             </div>
-            <h6>Log out @johnsmith</h6>
+            <Form onSubmit={this.logout}>
+              <Button type="submit" variant="primary" size="sm">
+                Log out @username
+              </Button>
+            </Form>
           </div>
         </div>
 
