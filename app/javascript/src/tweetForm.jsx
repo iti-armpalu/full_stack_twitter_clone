@@ -50,6 +50,9 @@ class TweetForm extends React.Component {
       .then(handleErrors)
       .then(data => {
         console.log("This worked")
+        this.setState({ 
+          msg: '' 
+        })
         this.getAllTweets()
       })
       .catch(error => {
