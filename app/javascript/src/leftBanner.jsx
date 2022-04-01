@@ -9,12 +9,12 @@ import { faBell, faEnvelope, faBookmark, faRectangleList, faUser, faCircle } fro
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 import './home.scss';
+import User from './user';
 
 class LeftBanner extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: '',
       authenticated: true,
     }
   }
