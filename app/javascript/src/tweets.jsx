@@ -1,6 +1,7 @@
 // tweets.jsx
 import React from 'react';
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
+import FormatDate from '@utils/formatDate';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faCircle } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
@@ -55,6 +56,14 @@ class Tweets extends React.Component {
       })
   }
 
+  userPage = (e) => {
+    e.preventDefault();
+    const params = new URLSearchParams(window.location.search);
+    let tweetEl = e.target.closest(".tweet-username")
+    let username = tweetEl.textContent.slice(1)
+    const redirect_url = params.get(`redirect_url`) || `/${username}`;
+    window.location = redirect_url;
+  }
 
   render () {
     const { tweets } = this.state;
@@ -75,12 +84,12 @@ class Tweets extends React.Component {
                 <div id="3"  className="row d-flex flex-column tweet-details">
                   <div id="2" className="col d-flex justify-content-between">
                     <div id="1">
-                      <span className="tweet-name"><b>User User</b></span>
-                      <span className="tweet-username">@User</span>
-                      <span className="tweet-time">• 9h</span>
+                      <span className="tweet-name"><b>{tweet.username}</b></span>
+                      <button type="button" className="btn btn-link p-0 align-top tweet-username" onClick={this.userPage}>@{tweet.username}</button>
+                      <span className="tweet-time">• {FormatDate(tweet.created_at, true)}</span>
                     </div>
                     {/* Here will be a condition: if user.id == tweet.user_id */}
-                    {(true)
+                    {(tweet.user_id == this.props.user_id)
                       ? <button type="button" className="btn btn-link btn-delete" onClick={this.deleteTweet}>Delete</button>
                       : <div></div>
                     }

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
 
+  get '/:username'                 => 'static_pages#profile'
+
   namespace :api do
     # USERS
     post '/users'                  => 'users#create'
@@ -8,6 +10,7 @@ Rails.application.routes.draw do
     # SESSIONS
     post '/sessions'               => 'sessions#create'
     get  '/authenticated'          => 'sessions#authenticated'
+    get  '/sessions/:id'          => 'sessions#show'
     delete '/sessions'             => 'sessions#destroy'
 
     # TWEETS

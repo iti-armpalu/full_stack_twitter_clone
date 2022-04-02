@@ -32,6 +32,12 @@ module Api
       end
     end
 
+    def show
+      @session = Session.find_by(id:params[:id])
+      return render json: { error: 'Cannot find session' }, status: :not_found if !@session
+      render 'api/sessions/show'
+    end
+
     def destroy
       token = cookies.signed[:twitter_session_token]
       session = Session.find_by(token: token)

@@ -19,10 +19,6 @@ class LeftBanner extends React.Component {
     }
   }
 
-  componentDidMount () {
-    console.log(this.props.user);
-  }
-
   logout = (e) => {
     e.preventDefault();
 
@@ -98,7 +94,7 @@ class LeftBanner extends React.Component {
                 </span>
               </div>
               <div className="col">
-                <h6>@username</h6>
+                <h6>@{this.props.username}</h6>
                 <h6>email</h6>
               </div>
             </div>
