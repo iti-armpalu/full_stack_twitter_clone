@@ -30,10 +30,10 @@ class Home extends React.Component {
       );
     };
 
-    return (
-      <Guest />
-    )
-  }
+      return (
+        <Guest />
+      )
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {

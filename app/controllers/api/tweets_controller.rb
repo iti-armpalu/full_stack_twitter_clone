@@ -12,7 +12,7 @@ module Api
       @tweet = user.tweets.new(tweet_params)
 
       if @tweet.save
-        TweetMailer.notify(@tweet).deliver!
+        #TweetMailer.notify(@tweet).deliver!
         render 'api/tweets/create'
       end
     end
@@ -26,7 +26,8 @@ module Api
       user = session.user
       tweet = Tweet.find_by(id: params[:id])
 
-      if tweet and tweet.user == user and tweet.destroy
+      # if tweet and tweet.user == user and tweet.destroy
+      if tweet and tweet.destroy
         render json: {
           success: true
         }

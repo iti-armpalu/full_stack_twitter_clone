@@ -19,6 +19,10 @@ class LeftBanner extends React.Component {
     }
   }
 
+  componentDidMount () {
+    console.log(this.props.user);
+  }
+
   logout = (e) => {
     e.preventDefault();
 

@@ -43,6 +43,7 @@ class TweetForm extends React.Component {
       method: 'POST',
       body: JSON.stringify({
         tweet: {
+          username: this.state.username,
           message: this.state.msg,
         }
       })
