@@ -9,7 +9,6 @@ import { faBell, faEnvelope, faBookmark, faRectangleList, faUser, faCircle } fro
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 import './home.scss';
-import User from './user';
 
 class LeftBanner extends React.Component {
   constructor(props) {
@@ -95,12 +94,12 @@ class LeftBanner extends React.Component {
               </div>
               <div className="col">
                 <h6>@{this.props.username}</h6>
-                <h6>email</h6>
+                <h6>{this.props.email}</h6>
               </div>
             </div>
             <Form onSubmit={this.logout}>
               <Button type="submit" variant="primary" size="sm">
-                Log out @username
+                Log out @{this.props.username}
               </Button>
             </Form>
           </div>

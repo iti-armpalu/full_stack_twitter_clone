@@ -14,7 +14,6 @@ class Tweets extends React.Component {
     this.state = {
       tweets: [],
     }
-    
   }
 
   componentDidMount() {

@@ -8,13 +8,16 @@ import Tweets from '@src/tweets';
 import './home.scss';
 
 class User extends React.Component {
+  constructor(props) {
+    super(props)
+  }
 
   render () {
     return (
       <div className="container">
         <div className="row g-0 h-100">
           <div className="col-3 d-flex justify-content-end">
-            <LeftBanner />
+            <LeftBanner user_id={this.props.user_id} username={this.props.username} email={this.props.email} />
           </div>
           <div className="col-6 feed-inner">
             <div className="row d-flex flex-column px-3 py-2">

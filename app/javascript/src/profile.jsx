@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import LeftBanner from '@src/leftBanner';
 import RightBanner from '@src/rightBanner';
-import Tweets from '@src/tweets';
+import UserTweets from '@src/userTweets';
 import { handleErrors } from '@utils/fetchHelper';
 
 import './profile.scss';
@@ -12,11 +12,17 @@ class Profile extends React.Component {
     super(props)
     this.state = {
       authenticated: true,
+      username: 'abc',
       userTweets: [],
     }
   }
 
   componentDidMount() {
+    this.userAuthenticated(),
+    this.getUserTweets()
+  }
+
+  userAuthenticated() {
     fetch('/api/authenticated')
       .then(handleErrors)
       .then(data => {
@@ -24,17 +30,24 @@ class Profile extends React.Component {
           authenticated: data.authenticated,
         })
       })
-    this.getUserTweets()
   }
 
-  getUserTweets() {
-    console.log("hello profile page")
+  getUserTweets(username) {
+    console.log("Get user tweets")
+    fetch(`/users/${username}/tweets`)
+      .then(handleErrors)
+      .then(data => {
+        console.log('data', data)
+        this.setState({ 
+          tweets: data.userTweets,
+        })
+      })
   }
 
 
 
   render () {
-    const { authenticated } = this.state;
+    const { authenticated, username } = this.state;
 
     if (authenticated) {
       return (
@@ -46,10 +59,10 @@ class Profile extends React.Component {
           <div className="col-6 feed-inner">
             <div className="row d-flex flex-column px-3 py-2">
               <div className="col py-3">
-                <h5 className="mb-0"><b>Home</b></h5>
+                <h5 className="mb-0"><b>{username}</b></h5>
               </div>
               <div className="col">
-                <Tweets />
+                <UserTweets />
               </div>
             </div>
           </div>
