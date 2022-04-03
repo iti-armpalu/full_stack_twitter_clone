@@ -59,8 +59,8 @@ class Tweets extends React.Component {
     e.preventDefault();
     const params = new URLSearchParams(window.location.search);
     let tweetEl = e.target.closest(".tweet-username")
-    let username = tweetEl.textContent.slice(1)
-    const redirect_url = params.get(`redirect_url`) || `/${username}`;
+    let userTweetPage = tweetEl.textContent.slice(1)
+    const redirect_url = params.get(`redirect_url`) || `/${userTweetPage}`;
     window.location = redirect_url;
   }
 
@@ -87,7 +87,7 @@ class Tweets extends React.Component {
                       <button type="button" className="btn btn-link p-0 align-top tweet-username" onClick={this.userPage}>@{tweet.username}</button>
                       <span className="tweet-time">• {FormatDate(tweet.created_at, true)}</span>
                     </div>
-                    {/* Here will be a condition: if user.id == tweet.user_id */}
+                    {/* Condition: if user.id == tweet.user_id then show "Delete" button */}
                     {(tweet.user_id == this.props.user_id)
                       ? <button type="button" className="btn btn-link btn-delete" onClick={this.deleteTweet}>Delete</button>
                       : <div></div>

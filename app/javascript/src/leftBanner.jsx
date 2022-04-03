@@ -15,8 +15,10 @@ class LeftBanner extends React.Component {
     super(props)
     this.state = {
       authenticated: true,
+      username: this.props.username,
     }
   }
+  
 
   logout = (e) => {
     e.preventDefault();
@@ -47,7 +49,12 @@ class LeftBanner extends React.Component {
 
   render () {
 
+    const { authenticated, username } = this.state;
+
+    console.log({authenticated})
+    console.log({username})
     return (
+
         <div className="d-flex flex-column leftBanner px-2 py-2">
 
           <nav className="navbar d-flex flex-column">
@@ -93,13 +100,13 @@ class LeftBanner extends React.Component {
                 </span>
               </div>
               <div className="col">
-                <h6>@{this.props.username}</h6>
+                <h6>@{username}</h6>
                 <h6>{this.props.email}</h6>
               </div>
             </div>
             <Form onSubmit={this.logout}>
               <Button type="submit" variant="primary" size="sm">
-                Log out @{this.props.username}
+                Log out @{username}
               </Button>
             </Form>
           </div>
