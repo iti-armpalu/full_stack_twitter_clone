@@ -1,18 +1,17 @@
 // guest.jsx
 import React from 'react';
-import SignupWidget from '@src/signupWidget';
-import SigninWidget from '@src/signinWidget';
+import SignupWidget from '@src/guestComponents/signupWidget';
+import SigninWidget from '@src/guestComponents/signinWidget';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 
-import './home.scss';
+import '../home.scss';
 
 class Guest extends React.Component {
 
   render () {
 
     return(
-
       <div>
         <div className="row g-0 content">
           <div className="col image">
@@ -73,6 +72,5 @@ class Guest extends React.Component {
     )
   }
 }
-  
 
 export default Guest;

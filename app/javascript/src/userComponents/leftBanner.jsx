@@ -8,14 +8,13 @@ import { faHome, faHashtag, faEllipsis } from '@fortawesome/free-solid-svg-icons
 import { faBell, faEnvelope, faBookmark, faRectangleList, faUser, faCircle } from '@fortawesome/free-regular-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 
-import './home.scss';
-
 class LeftBanner extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       authenticated: true,
       username: this.props.username,
+      email: this.props.email,
     }
   }
   
@@ -49,10 +48,11 @@ class LeftBanner extends React.Component {
 
   render () {
 
-    const { authenticated, username } = this.state;
+    const { authenticated, username, email } = this.state;
 
     console.log({authenticated})
     console.log({username})
+    console.log({email})
     return (
 
         <div className="d-flex flex-column leftBanner px-2 py-2">
@@ -101,7 +101,7 @@ class LeftBanner extends React.Component {
               </div>
               <div className="col">
                 <h6>@{username}</h6>
-                <h6>{this.props.email}</h6>
+                <h6>{email}</h6>
               </div>
             </div>
             <Form onSubmit={this.logout}>

@@ -279,6 +279,14 @@ nav span:hover {
   text-decoration: underline;
 }
 
+.tweet-image img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 15px;
+}
+
 .btn-delete {
   color: #1DA1F2;
   text-decoration: none;

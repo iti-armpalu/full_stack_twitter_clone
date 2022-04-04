@@ -16,7 +16,6 @@ class SignupWidget extends React.Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
-
   }
 
   handleChange = (e) => {
@@ -60,7 +59,6 @@ class SignupWidget extends React.Component {
     const { email, password, username, success, error } = this.state;
 
     return (
-
         <div className="p-3 log-in-sign-up-background rounded">
           <h6 className="my-3"><b>Join Twitter today</b></h6>
           <Form onSubmit={this.signup}>
@@ -82,8 +80,8 @@ class SignupWidget extends React.Component {
             {error && <p className="text-danger mt-2">{error}</p>}
           </Form>
         </div>
-
     )
   }
 }
+
 export default SignupWidget;

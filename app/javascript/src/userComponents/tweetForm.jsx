@@ -4,9 +4,6 @@ import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //import { faImage } from '@fortawesome/free-solid-svg-icons';
 
-
-import './home.scss';
-
 class TweetForm extends React.Component {
   constructor(props) {
     super(props)
@@ -87,7 +84,7 @@ class TweetForm extends React.Component {
 
         <div className="form-group row g-0">
           <div className="col d-inline-flex">
-            <input className="form-control" type="file" id="image" />
+            <input className="form-control" type="file" id="image-select" name="image" />
           </div>
           <div className="col d-flex justify-content-end">
             <button type="submit" className="btn btn-tweet"><b>Tweet</b></button>

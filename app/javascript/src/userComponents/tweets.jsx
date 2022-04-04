@@ -6,13 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faCircle } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 
-import './home.scss';
-
 class Tweets extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       tweets: [],
+      username: this.props.username,
     }
   }
 
@@ -55,17 +54,18 @@ class Tweets extends React.Component {
       })
   }
 
-  userPage = (e) => {
+  userFeed = (e) => {
     e.preventDefault();
     const params = new URLSearchParams(window.location.search);
     let tweetEl = e.target.closest(".tweet-username")
-    let userTweetPage = tweetEl.textContent.slice(1)
-    const redirect_url = params.get(`redirect_url`) || `/${userTweetPage}`;
+    let userFeed = tweetEl.textContent.slice(1)
+    const redirect_url = params.get(`redirect_url`) || `/${userFeed}`;
     window.location = redirect_url;
+    console.log(userFeed)
   }
 
   render () {
-    const { tweets } = this.state;
+    const { tweets, username } = this.state;
 
     return (
       <div className="tweets py-3">
@@ -84,11 +84,11 @@ class Tweets extends React.Component {
                   <div id="2" className="col d-flex justify-content-between">
                     <div id="1">
                       <span className="tweet-name"><b>{tweet.username}</b></span>
-                      <button type="button" className="btn btn-link p-0 align-top tweet-username" onClick={this.userPage}>@{tweet.username}</button>
+                      <a href={`/${tweet.username}`} className="p-0 align-top tweet-username">@{tweet.username}</a>
                       <span className="tweet-time">• {FormatDate(tweet.created_at, true)}</span>
                     </div>
-                    {/* Condition: if user.id == tweet.user_id then show "Delete" button */}
-                    {(tweet.user_id == this.props.user_id)
+                    {/* Condition: if username == tweet.username then show "Delete" button */}
+                    {(tweet.username == username)
                       ? <button type="button" className="btn btn-link btn-delete" onClick={this.deleteTweet}>Delete</button>
                       : <div></div>
                     }
@@ -97,6 +97,13 @@ class Tweets extends React.Component {
 
                   <div className="col py-1">
                     <span>{tweet.message}</span>
+                     {/* Condition: if tweet.image !== null then show the attached image. Currently showing random image for testing purposes. Console.log image data show null at the moment */}
+                    {(true) 
+                      ? <div className="tweet-image mt-2">
+                          <img src="https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" alt="Image" />
+                      </div>
+                      : <div></div>
+                    }
                   </div>
                 </div>
                 

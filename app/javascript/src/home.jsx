@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Guest from '@src/guest';
-import User from '@src/user';
+import Guest from '@src/guestComponents/guest';
+import User from '@src/userComponents/user';
 import { handleErrors } from '@utils/fetchHelper';
 
 import './home.scss';
@@ -28,13 +28,13 @@ class Home extends React.Component {
   }
 
   render () {
-    const { authenticated, username } = this.state;
+    const { authenticated, username, email } = this.state;
 
     if (authenticated) {
       console.log({authenticated})
       console.log({username})
       return (
-        <User user_id={this.props.user_id} username={username} email={this.props.email} />
+        <User user_id={this.props.user_id} username={username} email={email} />
       );
     };
 

@@ -15,7 +15,7 @@ class Profile extends React.Component {
       username: '',
       userTweets: [],
     }
-  }s
+  }
 
   componentDidMount() {
     this.userAuthenticated(),
