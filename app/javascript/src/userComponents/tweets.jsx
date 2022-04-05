@@ -98,9 +98,9 @@ class Tweets extends React.Component {
                   <div className="col py-1">
                     <span>{tweet.message}</span>
                      {/* Condition: if tweet.image !== null then show the attached image. Currently showing random image for testing purposes. Console.log image data show null at the moment */}
-                    {(true) 
+                    {(tweet.image !== null) 
                       ? <div className="tweet-image mt-2">
-                          <img src="https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" alt="Image" />
+                          <img src={tweet.image} alt="Image" />
                       </div>
                       : <div></div>
                     }

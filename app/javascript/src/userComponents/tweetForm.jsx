@@ -1,6 +1,6 @@
 // tweetForm.jsx
 import React from 'react';
-import { safeCredentials, handleErrors } from '@utils/fetchHelper';
+import { safeCredentialsFormData, handleErrors } from '@utils/fetchHelper';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //import { faImage } from '@fortawesome/free-solid-svg-icons';
 
@@ -9,11 +9,13 @@ class TweetForm extends React.Component {
     super(props)
     this.state = {
       msg: '',
+      selectedFile: null,
       error: '',
       tweets: [],
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.onFileChange = this.onFileChange.bind(this);
 
   }
 
@@ -23,33 +25,42 @@ class TweetForm extends React.Component {
     })
   }
 
+  // On file select (from the pop up)
+  onFileChange = (e) => {
+      
+    // Update the state
+    this.setState({ 
+      [e.target.name]: e.target.files[0],
+    });
+  };
+
   postTweet = (e) => {
     e.preventDefault();
 
-    // Why FormData? - The FormData interface provides a way to easily construct a set of key/value pairs representing form fields and their values
-    // let formData = new FormData()
+    // Create an object of formData
+    let formData = new FormData();
+    formData.append('tweet[message]', this.state.msg);
+    if (this.state.selectedFile !== null) {
+      formData.append('tweet[image]', this.state.selectedFile, this.state.selectedFile.name);
+    }
+ 
+    console.log(this.state.msg);
+    console.log(this.state.selectedFile.name);
 
-    // The append() method of the FormData interface appends a new value onto an existing key inside a FormData object, or adds the key if it does not already exist. Synatx: formData.append(name, value);
-    // Note: FormData will only use input fields that use the name attribute.
-
-    // formData.append('tweet[message]', this.state.msg);
-
-  
-
-    fetch('/api/tweets', safeCredentials({
+    fetch('/api/tweets', safeCredentialsFormData({
       method: 'POST',
-      body: JSON.stringify({
-        tweet: {
-          username: this.state.username,
-          message: this.state.msg,
-        }
-      })
+      body: formData,
     }))
       .then(handleErrors)
       .then(data => {
-        console.log("This worked")
+        const tweetForm = document.querySelector('textarea#tweet')
+        tweetForm.value = ''
+        const tweetFormFile = document.querySelector('input#file-select')
+        tweetFormFile.value = ''
+        console.log('data', data)
         this.setState({ 
-          msg: '' 
+          msg: '',
+          selectedFile: null
         })
         this.getAllTweets()
       })
@@ -72,7 +83,7 @@ class TweetForm extends React.Component {
   }
 
   render () {
-    const { msg, error } = this.state;
+    const { msg, selectedFile, error } = this.state;
 
     return (
       <form onSubmit={this.postTweet}>
@@ -84,27 +95,15 @@ class TweetForm extends React.Component {
 
         <div className="form-group row g-0">
           <div className="col d-inline-flex">
-            <input className="form-control" type="file" id="image-select" name="image" />
+            <input className="form-control" type="file" id="file-select" name="selectedFile" onChange={this.onFileChange} />
           </div>
           <div className="col d-flex justify-content-end">
             <button type="submit" className="btn btn-tweet"><b>Tweet</b></button>
             {error && <p className="text-danger mt-2">{error}</p>}
           </div>
         </div>
-
-        {/* <div className="form-group row">
-          <div className="col upload-btn-wrapper">
-            <button className="btn-upload" id="customFileInput"><FontAwesomeIcon icon={faImage} className="icon-upload"/>Upload a file</button>
-            <input type="file" className="custom-file-input" id="customFileInput" name="myfile" />
-          </div>
-          <div className="col d-flex justify-content-end">
-            <button type="submit" className="btn btn-tweet"><b>Tweet</b></button>
-          </div>
-        </div> */}
-
       </form>
     )
-    
   }
 }
 
