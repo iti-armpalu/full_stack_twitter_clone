@@ -33,7 +33,6 @@ class UserTweets extends React.Component {
       })
   }
 
-
   deleteTweet = (e) => {
     e.preventDefault();
     let tweetEl = e.target.closest(".tweet-inner")

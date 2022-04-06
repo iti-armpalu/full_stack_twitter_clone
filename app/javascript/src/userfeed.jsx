@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import ReactDOM from 'react-dom';
 import LeftBanner from '@src/userComponents/leftBanner';
 import RightBanner from '@src/userComponents/rightBanner';
@@ -41,7 +41,7 @@ class Userfeed extends React.Component {
       <div className="container">
         <div className="row g-0 h-100">
           <div className="col-3 d-flex justify-content-end ">
-            <LeftBanner username={currentUsername} />
+            <LeftBanner username={user.username} />
           </div>
           <div className="col-6 feed-inner">
             <div className="row d-flex flex-column px-3 py-2">
