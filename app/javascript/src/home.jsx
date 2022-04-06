@@ -13,12 +13,11 @@ class Home extends React.Component {
     email: '',
   }
 
+  // --- On 'Log out" button -> end the current session. User is not authenticated and is redirected to the "Guest" page ---
   componentDidMount() {
     fetch('/api/authenticated')
       .then(handleErrors)
       .then(data => {
-        console.log(data)
-        console.log(data.username)
         this.setState({
           authenticated: data.authenticated,
           username: data.username,
@@ -27,14 +26,13 @@ class Home extends React.Component {
       })
   }
 
+  // --- If User is authenticated (meaning log in was successful) then render User page, if not then render Guest page, where user can ither sign up or sign in ---
   render () {
     const { authenticated, username, email } = this.state;
 
     if (authenticated) {
-      console.log({authenticated})
-      console.log({username})
       return (
-        <User user_id={this.props.user_id} username={username} email={email} />
+        <User username={username} email={email} />
       );
     };
 
@@ -45,12 +43,7 @@ class Home extends React.Component {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // const node = document.getElementById('params');
-  // const data = JSON.parse(node.getAttribute('data-params'));
-
   ReactDOM.render(
-    // console.log(`${data.username}`),
-    // <Home user_id={data.user_id} username={data.username} email={data.email} />,
     <Home />,
     document.body.appendChild(document.createElement('div')),
   )

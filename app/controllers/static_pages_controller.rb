@@ -3,14 +3,9 @@ class StaticPagesController < ApplicationController
     render 'home'
   end
 
-  # def profile 
-  #   # getting the current user
-  #   # token = cookies.signed[:twitter_session_token]
-  #   # session = Session.find_by(token: token)
-  #   # user = session.user
+  def userfeed
+    @data = { username: params[:username] }.to_json
 
-  #   # @data = { user_id: user.id, username: user.username, email: user.email }.to_json
-  #   render 'home'
-  # end
-
+    render 'userfeed'
+  end
 end

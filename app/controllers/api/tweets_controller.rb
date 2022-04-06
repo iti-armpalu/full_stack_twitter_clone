@@ -42,7 +42,7 @@ module Api
       user = User.find_by(username: params[:username])
 
       if user
-        @tweets = user.tweets
+        @tweets = (user.tweets).order(created_at: :desc)
         render 'api/tweets/index'
       end
     end

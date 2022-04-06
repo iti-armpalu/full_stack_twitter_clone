@@ -14,8 +14,6 @@ class SigninWidget extends React.Component {
       success: '',
       error: '',
     }
-
-    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = (e) => {
@@ -24,9 +22,9 @@ class SigninWidget extends React.Component {
     })
   }
 
+    // --- If user click on "Sign in" button, a new session is created. If successful user is redirected to the "Home" page, where he passes "authenticated" condition, as is taken to "User" page ---
   signin = (e) => {
     e.preventDefault();
-    console.log("This is sigin event handling")
 
     fetch('/api/sessions', safeCredentials({
       method: 'POST',
@@ -41,7 +39,6 @@ class SigninWidget extends React.Component {
       .then(data => {
         console.log('data', data)
         if (data.success) {
-          console.log('Sign in successful')
           this.setState({
             username: '',
             password: '',
@@ -75,7 +72,7 @@ class SigninWidget extends React.Component {
         </Form.Group>
         <div className="d-grid gap-2">
           <Button type="submit" variant="primary" size="sm" className="log-in-button">
-          Log in
+          Sign in
           </Button>
           <Button variant="light" size="sm">
             Forgot password?

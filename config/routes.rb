@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
 
-  get '/:username'                 => 'static_pages#home'
+  get '/:username'                 => 'static_pages#userfeed'
 
   namespace :api do
     # USERS
@@ -21,5 +21,9 @@ Rails.application.routes.draw do
     get  '/tweets/search/:keyword' => 'tweets#search'
   end
 
-  get '*path' => 'static_pages#home'
+  get '*path' => 'static_pages#home', constraints: lambda { |req|
+    req.path.exclude? 'rails/active_storage'
+  }
 end
+
+
