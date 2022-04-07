@@ -1,4 +1,4 @@
-// tweets.jsx
+// userTweets.jsx
 import React from 'react';
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 import FormatDate from '@utils/formatDate';
@@ -6,26 +6,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 
-class Tweets extends React.Component {
+class UserTweets extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      tweets: [],
-      username: this.props.username,
+      userTweets: [],
     }
   }
 
   componentDidMount() {
-    this.getAllTweets()
+    this.getAllUserTweets()
   }
 
-  getAllTweets() {
-    fetch('/api/tweets')
+  getAllUserTweets() {
+    const username = this.props.username;
+    console.log(username);
+
+    fetch(`/api/users/${username}/tweets`)
       .then(handleErrors)
       .then(data => {
-        console.log('data', data)
-        this.setState({ 
-          tweets: data.tweets,
+        console.log('data', data),
+        this.setState({
+          userTweets: data.tweets,
         })
       })
   }
@@ -43,8 +45,7 @@ class Tweets extends React.Component {
       .then(data => {
         console.log('data', data)
         if (data.success) {
-          console.log('Tweet deleted successfully')
-          this.getAllTweets()
+          this.getAllUserTweets()
         }
       })
       .catch(error => {
@@ -55,11 +56,11 @@ class Tweets extends React.Component {
   }
 
   render () {
-    const { tweets, username } = this.state;
+    const { userTweets } = this.state;
 
     return (
-      <div className="tweets pt-3">
-        {tweets.map(tweet => {
+      <div className="tweets py-3">
+        {userTweets.map(tweet => {
           return (
             <div  key={tweet.id} id={tweet.id} className="row d-flex py-2 tweet-inner">
               <div className="col-1">
@@ -73,12 +74,12 @@ class Tweets extends React.Component {
                   <div className="col d-flex justify-content-between">
                     <div>
                       <span className="tweet-name"><b>{tweet.username}</b></span>
-                      <a href={`/${tweet.username}`} className="p-0 tweet-username">@{tweet.username}</a>
+                      <a href={`/${tweet.username}`} className="p-0 align-top tweet-username">@{tweet.username}</a>
                       <span className="tweet-time">• {FormatDate(tweet.created_at, true)}</span>
                     </div>
 
                     {/* Condition: if username == tweet.username then show "Delete" button */}
-                    {(tweet.username == username)
+                    {(tweet.username == this.props.currentUsername)
                       ? <button type="button" className="btn btn-link btn-delete" onClick={this.deleteTweet}>Delete</button>
                       : <div></div>
                     }
@@ -87,7 +88,7 @@ class Tweets extends React.Component {
                   <div className="col py-1">
                     <span>{tweet.message}</span>
 
-                    {/* Condition: if tweet.image !== null then show the attached image. */}
+                     {/* Condition: if tweet.image !== null then show the attached image. Currently showing random image for testing purposes. Console.log image data show null at the moment */}
                     {(tweet.image !== null) 
                       ? <div className="tweet-image mt-2">
                           <img src={tweet.image} alt="Image" />
@@ -106,4 +107,4 @@ class Tweets extends React.Component {
   }
 }
 
-export default Tweets;
+export default UserTweets;

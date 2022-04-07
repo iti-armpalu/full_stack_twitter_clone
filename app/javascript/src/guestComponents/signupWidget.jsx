@@ -14,8 +14,6 @@ class SignupWidget extends React.Component {
       success: '',
       error: '',
     }
-
-    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = (e) => {
@@ -23,7 +21,8 @@ class SignupWidget extends React.Component {
       [e.target.name]: e.target.value,
     })
   }
-
+  
+  // --- If user click on "Sign up" button, a new user is created. User can continue with "Sign in" event ---
   signup = (e) => {
     e.preventDefault();
 
@@ -59,27 +58,27 @@ class SignupWidget extends React.Component {
     const { email, password, username, success, error } = this.state;
 
     return (
-        <div className="p-3 log-in-sign-up-background rounded">
-          <h6 className="my-3"><b>Join Twitter today</b></h6>
-          <Form onSubmit={this.signup}>
-            <Form.Group className="mb-3">
-              <Form.Control type="username" placeholder="Username" name="username" value={username} onChange={this.handleChange} />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Control type="email" placeholder="Email" name="email" value={email} onChange={this.handleChange} />
-            </Form.Group>
-            <Form.Group className="mb-4">
-              <Form.Control type="password" placeholder="Password" name="password" value={password} onChange={this.handleChange} />
-            </Form.Group>
-            <div className="d-grid gap-2">
-              <Button type="submit" variant="primary" size="sm" className="sign-up-button">
-                Sign up
-              </Button>
-            </div>
-            {success && <p className="text-success mt-2">{success}</p>}
-            {error && <p className="text-danger mt-2">{error}</p>}
-          </Form>
-        </div>
+      <div className="p-3 log-in-sign-up-background rounded">
+        <h6 className="my-3"><b>Join Twitter today</b></h6>
+        <Form onSubmit={this.signup}>
+          <Form.Group className="mb-3">
+            <Form.Control type="username" placeholder="Username" name="username" value={username} onChange={this.handleChange} />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Control type="email" placeholder="Email" name="email" value={email} onChange={this.handleChange} />
+          </Form.Group>
+          <Form.Group className="mb-4">
+            <Form.Control type="password" placeholder="Password" name="password" value={password} onChange={this.handleChange} />
+          </Form.Group>
+          <div className="d-grid gap-2">
+            <Button type="submit" variant="primary" size="sm" className="sign-up-button">
+              Sign up
+            </Button>
+          </div>
+          {success && <p className="text-success mt-2">{success}</p>}
+          {error && <p className="text-danger mt-2">{error}</p>}
+        </Form>
+      </div>
     )
   }
 }

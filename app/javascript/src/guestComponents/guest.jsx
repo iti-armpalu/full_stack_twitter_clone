@@ -9,6 +9,7 @@ import '../home.scss';
 
 class Guest extends React.Component {
 
+  // --- Guest page (user is not signed in). Sign up and sign in widgets will be displayed here ---
   render () {
 
     return(
