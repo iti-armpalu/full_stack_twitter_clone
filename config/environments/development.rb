@@ -36,7 +36,7 @@ Rails.application.configure do
   config.active_record.migration_error = :page_load
 
   # Using the local settings for Active Storage
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
