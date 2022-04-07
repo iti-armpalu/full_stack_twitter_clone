@@ -2,7 +2,7 @@
 import React from 'react';
 import LeftBanner from '@src/userComponents/leftBanner';
 import RightBanner from '@src/userComponents/rightBanner';
-import Mainfeed from '@src/userComponents/mainfeed';
+import MainFeed from '@src/userComponents/mainFeed';
 
 import '../home.scss';
 
@@ -25,7 +25,7 @@ class User extends React.Component {
             <LeftBanner username={username} email={email} />
           </div>
           <div className="col-6 feed-inner">
-            <Mainfeed username={username}/> 
+            <MainFeed username={username}/> 
           </div>
           <div className="col-3">
             <RightBanner />

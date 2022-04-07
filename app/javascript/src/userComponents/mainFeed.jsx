@@ -3,7 +3,7 @@ import React from 'react';
 import TweetForm from '@src/userComponents/tweetForm';
 import Tweets from '@src/userComponents/tweets';
 
-class Mainfeed extends React.Component {
+class MainFeed extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -30,4 +30,4 @@ class Mainfeed extends React.Component {
   }
 }
 
-export default Mainfeed;
+export default MainFeed;
