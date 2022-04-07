@@ -8,7 +8,7 @@ import { handleErrors } from '@utils/fetchHelper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
-import './home.scss';
+import './userfeed.scss';
 
 class Userfeed extends React.Component {
   constructor(props) {
