@@ -45,12 +45,8 @@ class Home extends React.Component {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // const node = document.getElementById('params');
-  // const data = JSON.parse(node.getAttribute('data-params'));
 
   ReactDOM.render(
-    // console.log(`${data.username}`),
-    // <Home user_id={data.user_id} username={data.username} email={data.email} />,
     <Home />,
     document.body.appendChild(document.createElement('div')),
   )
