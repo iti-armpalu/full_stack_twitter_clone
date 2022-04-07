@@ -5,6 +5,8 @@ import RightBanner from '@src/userComponents/rightBanner';
 import UserTweets from '@src/userComponents/userTweets';
 import Guest from '@src/guestComponents/guest';
 import { handleErrors } from '@utils/fetchHelper';
+
+// Importing FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
@@ -57,7 +59,8 @@ class Userfeed extends React.Component {
                     <div className="col-1 d-flex justify-content-center align-items-center">
                       <a href="/">
                         <span>
-                          <FontAwesomeIcon icon={faArrowLeft} size="lg"/>
+                          
+                          <FontAwesomeIcon icon={faArrowLeft} />
                         </span>
                       </a>
                     </div>
