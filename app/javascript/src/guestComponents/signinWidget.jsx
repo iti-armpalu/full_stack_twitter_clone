@@ -52,7 +52,7 @@ class SigninWidget extends React.Component {
       })
       .catch(error => {
         this.setState({
-          error: 'Could not log in.',
+          error: 'Could not sign in.',
         })
       })
   }

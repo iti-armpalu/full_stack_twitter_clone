@@ -16,9 +16,6 @@ class Userfeed extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-    //   username: this.props.username,
-    //   currentUsername: '',
-    //   currentEmail: '',
       authenticated: true,
     }
   }
@@ -31,7 +28,7 @@ class Userfeed extends React.Component {
     fetch('/api/authenticated')
     .then(handleErrors)
     .then(data => {
-      console.log('data', data)
+      // console.log('data', data)
       this.setState({
         authenticated: data.authenticated,
         username: data.username,
@@ -44,8 +41,6 @@ class Userfeed extends React.Component {
     const { authenticated, username, email } = this.state
 
     if (authenticated) {
-      console.log("authenticated: " + authenticated)
-      console.log("username: " + username)
       return (
         <div className="container">
           <div className="row g-0 h-100">

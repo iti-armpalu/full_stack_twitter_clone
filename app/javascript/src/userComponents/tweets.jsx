@@ -10,41 +10,27 @@ class Tweets extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      tweets: [],
       username: this.props.username,
     }
   }
 
   componentDidMount() {
-    this.getAllTweets()
-  }
-
-  getAllTweets() {
-    fetch('/api/tweets')
-      .then(handleErrors)
-      .then(data => {
-        console.log('data', data)
-        this.setState({ 
-          tweets: data.tweets,
-        })
-      })
   }
 
   deleteTweet = (e) => {
     e.preventDefault();
     let tweetEl = e.target.closest(".tweet-inner")
     let tweetId = tweetEl.getAttribute('id')
-    console.log(tweetId)
 
     fetch(`/api/tweets/${tweetId}`, safeCredentials({
       method: 'DELETE',
     }))
       .then(handleErrors)
       .then(data => {
-        console.log('data', data)
+        // console.log('data', data)
         if (data.success) {
-          console.log('Tweet deleted successfully')
-          this.getAllTweets()
+          // this.getAllTweets()
+          this.props.getAllTweets()
         }
       })
       .catch(error => {
@@ -55,7 +41,8 @@ class Tweets extends React.Component {
   }
 
   render () {
-    const { tweets, username } = this.state;
+    const { tweets } = this.props
+    const { username } = this.state
 
     return (
       <div className="tweets pt-3">

@@ -38,8 +38,6 @@ class SignupWidget extends React.Component {
     }))
       .then(handleErrors)
       .then(data => {
-        console.log('data', data)
-        console.log('Sign up was successful')
         this.setState({
           email: '',
           password: '',

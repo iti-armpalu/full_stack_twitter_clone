@@ -11,11 +11,6 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 class LeftBanner extends React.Component {
   constructor(props) {
     super(props)
-  //   this.state = {
-  //     authenticated: true,
-  //     username: this.props.username,
-  //     email: this.props.email,
-  //   }
   }
   
 
@@ -27,7 +22,7 @@ class LeftBanner extends React.Component {
     }))
       .then(handleErrors)
       .then(data => {
-        console.log('data', data)
+        // console.log('data', data)
         if (data.success) {
           this.setState({
             authenticated: false,

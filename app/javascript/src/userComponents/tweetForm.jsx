@@ -9,19 +9,7 @@ class TweetForm extends React.Component {
       msg: '',
       selectedFile: null,
       error: '',
-      tweets: [],
     }
-  }
-
-  getAllTweets() {
-    fetch('/api/tweets')
-      .then(handleErrors)
-      .then(data => {
-        console.log('data', data)
-        this.setState({ 
-          tweets: data.tweets,
-        })
-      })
   }
 
   handleChange = (e) => {
@@ -57,12 +45,11 @@ class TweetForm extends React.Component {
         tweetForm.value = ''
         const tweetFormFile = document.querySelector('input#file-select')
         tweetFormFile.value = ''
-        this.getAllTweets()
+        this.props.getAllTweets()
         this.setState({ 
           msg: '',
           selectedFile: null
         })
-
       })
       .catch(error => {
         this.setState({
@@ -73,7 +60,7 @@ class TweetForm extends React.Component {
 
   // --- Tweet form for submitting a new tweet  ---
   render () {
-    const { msg, selectedFile, error } = this.state;
+    const { msg, error } = this.state;
 
     return (
       <form onSubmit={this.postTweet}>
@@ -85,6 +72,7 @@ class TweetForm extends React.Component {
             <input className="form-control" type="file" id="file-select" name="selectedFile" onChange={this.onFileChange} />
           </div>
           <div className="col d-flex justify-content-end">
+            {/* <span className="tweet-char-counter" onKeyUp={this.handleCharChange}></span> */}
             <button type="submit" className="btn btn-tweet"><b>Tweet</b></button>
           </div>
         </div>

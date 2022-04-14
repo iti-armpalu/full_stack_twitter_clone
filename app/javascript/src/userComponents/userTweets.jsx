@@ -20,7 +20,6 @@ class UserTweets extends React.Component {
 
   getAllUserTweets() {
     const username = this.props.username;
-    console.log(username);
 
     fetch(`/api/users/${username}/tweets`)
       .then(handleErrors)
@@ -36,14 +35,13 @@ class UserTweets extends React.Component {
     e.preventDefault();
     let tweetEl = e.target.closest(".tweet-inner")
     let tweetId = tweetEl.getAttribute('id')
-    console.log(tweetId)
 
     fetch(`/api/tweets/${tweetId}`, safeCredentials({
       method: 'DELETE',
     }))
       .then(handleErrors)
       .then(data => {
-        console.log('data', data)
+        // console.log('data', data)
         if (data.success) {
           this.getAllUserTweets()
         }

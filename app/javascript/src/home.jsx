@@ -17,8 +17,7 @@ class Home extends React.Component {
     fetch('/api/authenticated')
       .then(handleErrors)
       .then(data => {
-        console.log(data)
-        console.log(data.username)
+        // console.log(data)
         this.setState({
           authenticated: data.authenticated,
           username: data.username,
@@ -31,8 +30,6 @@ class Home extends React.Component {
     const { authenticated, username, email } = this.state;
 
     if (authenticated) {
-      console.log({authenticated})
-      console.log({username})
       return (
         <User user_id={this.props.user_id} username={username} email={email} />
       );
