@@ -54,7 +54,6 @@ class Userfeed extends React.Component {
                     <div className="col-1 d-flex justify-content-center align-items-center">
                       <a href="/">
                         <span>
-                          
                           <FontAwesomeIcon icon={faArrowLeft} />
                         </span>
                       </a>
