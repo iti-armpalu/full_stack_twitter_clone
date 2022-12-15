@@ -1,18 +1,18 @@
 databases:
-  - name: mysite
-    databaseName: mysite
-    user: mysite
+  - name: fs_twitter_clone
+    databaseName: fs_twitter_clone
+    user: fs_twitter_clone
 
 services:
   - type: web
-    name: mysite
+    name: fs_twitter_clone
     env: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: mysite
+          name: fs_twitter_clone
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
