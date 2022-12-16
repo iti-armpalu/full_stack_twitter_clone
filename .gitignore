@@ -32,3 +32,4 @@ yarn-debug.log*
 
 /config/master.key
 /config/secrets.yml
+/config/credentials.yml.enc
