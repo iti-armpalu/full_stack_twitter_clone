@@ -273,6 +273,7 @@ DEPENDENCIES
   pry-rails (>= 0.3.9)
   puma (~> 5.6)
   rails (~> 6.1.4)
+  railties (~> 6.1, >= 6.1.4.4)
   rspec-rails (~> 4.0)
   sass-rails (~> 6.0)
   spring (< 3.0)
