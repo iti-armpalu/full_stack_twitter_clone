@@ -20,7 +20,7 @@
 db/*.sqlite3
 
 public/system
-.env
+# .env
 storage
 
 /public/packs
@@ -31,3 +31,4 @@ yarn-debug.log*
 .yarn-integrity
 
 /config/master.key
+/config/secrets.yml
