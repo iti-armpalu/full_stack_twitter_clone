@@ -20,7 +20,7 @@
 db/*.sqlite3
 
 public/system
-# .env
+.env
 storage
 
 /public/packs
