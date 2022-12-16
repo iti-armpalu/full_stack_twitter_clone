@@ -40,6 +40,9 @@ gem 'aws-sdk-s3', '~> 1.112'
 # Webrick
 gem "webrick", "~> 1.7"
 
+# Active Support
+gem 'activesupport', '~> 6.1', '>= 6.1.4.4'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
